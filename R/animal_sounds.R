@@ -11,9 +11,24 @@
 #' @examples
 #' animal_sounds("dog", "woof")
 #' animal_sounds("chimp", "ugh ugh")
+
+usethis::use_package("rlang")
+usethis::use_package("cli")
+
 animal_sounds <- function(animal, sound) {
-  stopifnot(is.character(animal) & length(animal) == 1)
-  stopifnot(is.character(sound) & length(sound) == 1)
-  insult<-sample(c("muppet", "numpty", "silly-billy"))[1]
+  insult<-sample(c("muppet", "numpty", "silly-billy", "twit", "wazzock"))[1]
+
+  if (!rlang::is_character(animal, n = 1)) {
+    cli::cli_abort(
+      c("{.var animal} must be a single string!",
+        "i" = "It was {.type {animal}} of length {length(animal)} instead. You {insult}!")
+    )
+  }
+  if (!rlang::is_character(sound, n = 1)) {
+    cli::cli_abort(
+      c("{.var sound} must be a single string!",
+        "i" = "It was {.type {sound}} of length {length(sound)} instead. You {insult}!")
+    )
+  }
   paste0("The ", animal, " goes ", sound, "! You ", insult, ".")
 }
