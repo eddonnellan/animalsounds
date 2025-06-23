@@ -15,19 +15,25 @@
 usethis::use_package("rlang")
 usethis::use_package("cli")
 
-animal_sounds <- function(animal, sound) {
+animal_sounds <- function(animal, sound, seed=NA) {
+  if(!is.na(seed)){
+    set.seed(seed)
+  }
   insult<-sample(c("muppet", "numpty", "silly-billy", "twit", "wazzock"))[1]
 
   if (!rlang::is_character(animal, n = 1)) {
     cli::cli_abort(
       c("{.var animal} must be a single string!",
-        "i" = "It was {.type {animal}} of length {length(animal)} instead. You {insult}!")
+        "i" = "It was {.type {animal}} of length {length(animal)} instead. You {insult}!"),
+      class = "error_not_single_string"
     )
+
   }
   if (!rlang::is_character(sound, n = 1)) {
     cli::cli_abort(
       c("{.var sound} must be a single string!",
-        "i" = "It was {.type {sound}} of length {length(sound)} instead. You {insult}!")
+        "i" = "It was {.type {sound}} of length {length(sound)} instead. You {insult}!"),
+      class = "error_not_single_string"
     )
   }
   paste0("The ", animal, " goes ", sound, "! You ", insult, ".")
