@@ -31,7 +31,7 @@ animal_sounds <- function(animal, sound=NULL, seed=NA) {
   }
 
   if(is.null(sound)){
-    paste0("The ", animal, " doesn't make a sound. You ", insult, ".")
+    return(paste0("The ", animal, " doesn't make a sound. You ", insult, "."))
   }else{
     if (!rlang::is_character(sound, n = 1)) {
       cli::cli_abort(
@@ -41,7 +41,7 @@ animal_sounds <- function(animal, sound=NULL, seed=NA) {
       )
     }
 
-    paste0("The ", animal, " goes ", sound, "! You ", insult, ".")
+    return(paste0("The ", animal, " goes ", sound, "! You ", insult, "."))
 
   }
 }
