@@ -12,10 +12,10 @@ animal_sounds(animal, sound)
 \item{sound}{A string representing an animal sound}
 }
 \value{
-A string of the form "The (animal) goes (sound)! You (gentle insult)."
+A string of the form "The \{animal\} goes \{sound\}! You \{gentle insult\}."
 }
 \description{
-Print an animal's sounds and a random gentle insult
+Wraps \code{\link[=paste0]{paste0()}} and \code{\link[=sample]{sample()}}. Use \code{\link[=set.seed]{set.seed()}} for reproducible insults.
 }
 \examples{
 animal_sounds("dog", "woof")
