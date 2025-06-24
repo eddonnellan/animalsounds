@@ -1,0 +1,36 @@
+---
+title: "A Guide to Using animalsounds"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{animalsounds}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+### Example useage
+```{r working}
+library(animalsounds)
+
+animal_sounds("dog", "woof")
+```
+
+### If sound is not entered, default behaviour is this:
+```{r working_sound_null}
+library(animalsounds)
+
+animal_sounds("slug")
+```
+
+### Specifying seed allows for reproducible insults
+```{r working_reprod}
+library(animalsounds)
+
+animal_sounds("giraffe", "who knows", seed=500)
+```
