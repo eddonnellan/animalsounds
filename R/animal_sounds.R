@@ -4,16 +4,14 @@
 #'
 #' @param animal A string representing an animal
 #' @param sound A string representing an animal sound
+#' @param seed A random seed that can be set for reproducibility
 #'
 #' @returns A string of the form "The \{animal\} goes \{sound\}! You \{gentle insult\}."
 #' @export
 #'
 #' @examples
 #' animal_sounds("dog", "woof")
-#' animal_sounds("chimp", "ugh ugh")
-
-usethis::use_package("rlang")
-usethis::use_package("cli")
+#' animal_sounds("chimp", "hooo hooo wah-hu-wah-hu-wah-hu-wah-hu-wah-hu waaaaargh waaaaargh hu hu hu")
 
 animal_sounds <- function(animal, sound=NULL, seed=NA) {
   if(!is.na(seed)){

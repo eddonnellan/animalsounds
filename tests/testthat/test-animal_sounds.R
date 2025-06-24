@@ -1,6 +1,7 @@
 test_that("animal_sounds produces expected strings", {
-  dog_woof <- animal_sounds("dog", "woof", 411)
-  set.seed(411)
+  rand_seed<-sample(1000,1)
+  dog_woof <- animal_sounds("dog", "woof", rand_seed)
+  set.seed(rand_seed)
   insult<-sample(c("muppet", "numpty", "silly-billy", "twit", "wazzock"))[1]
 
   expect_equal(dog_woof, paste0("The dog goes woof! You ", insult, "."))
@@ -15,8 +16,10 @@ test_that("handles invalid inputs", {
 })
 
 test_that("handles null sound input", {
-  giraffe <- animal_sounds("giraffe", seed=411)
-  set.seed(411)
+  rand_seed<-sample(1000,1)
+
+  giraffe <- animal_sounds("giraffe", seed=rand_seed)
+  set.seed(rand_seed)
   insult<-sample(c("muppet", "numpty", "silly-billy", "twit", "wazzock"))[1]
 
   expect_equal(giraffe,
